@@ -86,7 +86,7 @@ const accessLogger = morgan('combined', { stream: accessLogStream });
         console.log(status, path)
         imagenxd = await page.screenshot({ encoding: 'binary' });
         websucketServer.clients.forEach(client => client.send('actualizao'))
-        await wait(7500)
+        await wait(Number(process.env.MSTOWAIT || '10000'))
     }
 
 })

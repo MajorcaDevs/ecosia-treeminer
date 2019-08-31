@@ -1,4 +1,5 @@
-FROM node:lts-alpine
+ARG ARCH=amd64
+FROM ${ARCH}/node:lts-alpine
 
 RUN apk add --no-cache \
     chromium \
