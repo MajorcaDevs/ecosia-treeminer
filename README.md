@@ -14,15 +14,15 @@ Node.js service that uses Puppeteer to mine some trees searching random words at
 #### Docker
 
 ```
-docker build -t majorcadevs/ecosia-treeminer .
+docker build -t majorcadevs/ecosia-treeminer -f docker/Dockerfile .
 docker run --rm -p 8080:8080 -it majorcadevs/ecosia-treeminer
 ```
 
 #### Docker Compose
 
 ```
-docker-compose build
-docker-compose up
+docker-compose -f docker/docker-compose.yml build
+docker-compose -f docker/docker-compose.yml up
 ```
 
 #### Local
