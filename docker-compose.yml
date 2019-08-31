@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  ecosia-treeminer:
+    image: majorcadevs/ecosia-treeminer
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      - PROXY=socks5://tor:9050
+    depends_on:
+      - tor
+    restart: always
+  tor:
+    image: amgxv/tor:stable
+    volumes:
+      - "./tor-config:/etc/tor/:ro"
+    restart: always
