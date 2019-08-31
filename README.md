@@ -10,6 +10,7 @@ Node.js service that uses Puppeteer to mine some trees searching random words at
 
 * `LOGS_PATH` -> Path where logs should be stored -> `/ecosia-treeminer/logs/`
 * `PROXY` -> Option to make requests using a proxy -> `socks5://tor:9050`
+* `MSTOWAIT` -> Milliseconds to wait for the next request -> `10000`
 
 #### Docker
 
