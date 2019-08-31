@@ -15,7 +15,7 @@ def buildDockerImage(image,arch,tag) {
 def pushDockerImage(arch,tag) {
   script {
     docker.withRegistry('https://registry.hub.docker.com', 'bobthabuilda') { 
-      img.push("${arch}-${tag}")  
+      img.push("${arch}-${tag}")
     }
   }
 }
@@ -23,7 +23,6 @@ def pushDockerImage(arch,tag) {
 pipeline {
   agent { label '!docker-qemu' }
   environment {
-    img = ''
     image = 'majorcadevs/ecosia-treeminer'
     chatId = ''
   }
@@ -38,103 +37,106 @@ pipeline {
 
     stage ('Build Docker Images') {
 
-        parallel {
-          stage ('docker-amd64') {
-            agent {
-              label 'docker-qemu'
-            }
-
-            environment {
-              arch = 'amd64'
-              tag = 'latest'
-            }
-
-            stages {
-
-              stage ('Current Node') {
-                steps {
-                  getNodeHostname()
-                }
-              }
-
-              stage ('Build') {
-                steps {
-                  buildDockerImage(image,arch,tag)
-                }
-              }
-
-              stage ('Push') {
-                steps {
-                  pushDockerImage(arch,tag)
-                }
-              }
-            }
+      parallel {
+        stage ('docker-amd64') {
+          agent {
+            label 'docker-qemu'
           }
 
-          stage ('docker-arm64') {
-            agent {
-              label 'docker-qemu'
-            }
-
-            environment {
-              arch = 'arm64v8'
-              tag = 'latest'
-            }
-
-            stages {
-
-              stage ('Current Node') {
-                steps {
-                  getNodeHostname()
-                }
-              }
-
-              stage ('Build') {
-                steps {
-                  buildDockerImage(image,arch,tag)
-                }
-              }
-
-              stage ('Push') {
-                steps {
-                  pushDockerImage(arch,tag)
-                }
-              }
-            }
+          environment {
+            img = ''
+            arch = 'amd64'
+            tag = 'latest'
           }
 
-          stage ('docker-arm32') {
-            agent {
-              label 'docker-qemu'
+          stages {
+
+            stage ('Current Node') {
+              steps {
+                getNodeHostname()
+              }
             }
 
-            environment {
-              arch = 'arm32v7'
-              tag = 'latest'
+            stage ('Build') {
+              steps {
+                buildDockerImage(image,arch,tag)
+              }
             }
 
-            stages {
-
-              stage ('Current Node') {
-                steps {
-                  getNodeHostname()
-                }
-              }
-
-              stage ('Build') {
-                steps {
-                  buildDockerImage(image,arch,tag)
-                }
-              }
-
-              stage ('Push') {
-                steps {
-                  pushDockerImage(arch,tag)
-                }
+            stage ('Push') {
+              steps {
+                pushDockerImage(arch,tag)
               }
             }
           }
         }
+
+        stage ('docker-arm64') {
+          agent {
+            label 'docker-qemu'
+          }
+
+          environment {
+            img = ''
+            arch = 'arm64v8'
+            tag = 'latest'
+          }
+
+          stages {
+
+            stage ('Current Node') {
+              steps {
+                getNodeHostname()
+              }
+            }
+
+            stage ('Build') {
+              steps {
+                buildDockerImage(image,arch,tag)
+              }
+            }
+
+            stage ('Push') {
+              steps {
+                pushDockerImage(arch,tag)
+              }
+            }
+          }
+        }
+
+        stage ('docker-arm32') {
+          agent {
+            label 'docker-qemu'
+          }
+
+          environment {
+            img = ''
+            arch = 'arm32v7'
+            tag = 'latest'
+          }
+
+          stages {
+
+            stage ('Current Node') {
+              steps {
+                getNodeHostname()
+              }
+            }
+
+            stage ('Build') {
+              steps {
+                buildDockerImage(image,arch,tag)
+              }
+            }
+
+            stage ('Push') {
+              steps {
+                pushDockerImage(arch,tag)
+              }
+            }
+          }
+        }
+      }
     }
 
     stage('Update manifest') {
