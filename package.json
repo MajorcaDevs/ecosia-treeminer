@@ -10,10 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "morgan": "^1.9.1",
-    "puppeteer": "^1.19.0",
+    "morgan": "^1.10.0",
+    "puppeteer": "^1.20.0",
     "random-words": "^1.1.0",
-    "ws": "^7.1.0"
+    "ws": "^7.2.3"
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.1",
