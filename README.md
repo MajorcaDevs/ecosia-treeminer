@@ -30,6 +30,6 @@ docker-compose -f docker/docker-compose.yml up
 
 ```
 npm install
-node src/index.js
+npm start
 ```
 
