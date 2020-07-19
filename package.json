@@ -13,7 +13,7 @@
     "morgan": "^1.10.0",
     "puppeteer": "^1.20.0",
     "random-words": "^1.1.1",
-    "ws": "^7.2.3"
+    "ws": "^7.3.1"
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.1",
