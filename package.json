@@ -12,7 +12,7 @@
   "dependencies": {
     "morgan": "^1.10.0",
     "puppeteer": "^5.2.0",
-    "random-words": "^1.1.1",
+    "random-words": "^1.2.0",
     "ws": "^7.4.6"
   },
   "optionalDependencies": {
