@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "morgan": "^1.10.0",
+    "morgan": "^1.10.1",
     "puppeteer": "^5.2.0",
     "random-words": "^1.2.0",
     "ws": "^7.5.10"
