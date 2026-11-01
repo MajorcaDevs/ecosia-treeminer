@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "morgan": "^1.12.1",
-    "puppeteer": "^24.37.5",
+    "puppeteer": "^25.16.0",
     "random-words": "^1.2.0",
     "ws": "^7.5.11"
   },
